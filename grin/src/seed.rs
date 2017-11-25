@@ -228,6 +228,36 @@ fn listen_for_addrs(
 	}
 }
 
+use std::net;
+
+// Thanks @JollyMort, @andybellenie, @ferrucc-io
+const DNS_SEEDS: &'static [&'static str] = &[
+	"seed1.testnet.grin.andybellenie.net",
+	"seed2.testnet.grin.andybellenie.net",
+	"seed3.testnet.grin.andybellenie.net",
+	"seed4.testnet.grin.andybellenie.net",
+	"seed1.testnet.grin.ferrucc.io",
+	"seed2.testnet.grin.ferrucc.io",
+	"seed3.testnet.grin.ferrucc.io",
+	"seed4.testnet.grin.ferrucc.io",
+	"grintest.unseeni.net"
+];
+const DNS_SEEDS2: &'static [&'static str] =
+	&[ "seed1.testnet.grin.andybellenie.net", "grintest.unseeni.net" ];
+
+pub fn dns_seeds() -> Box<Fn() -> Vec<SocketAddr> + Send> {
+	Box::new(|| {
+		// get a list of SocketAddr
+		let addrs = DNS_SEEDS
+			.map(|fqdn| net::lookup_host(fqdn) )
+			.collect::<Vec<_>>(); // fixme: get this into the right format
+
+		debug!(LOGGER, "Retrieved seed addresses: {:?}", addrs);
+		addrs
+		// Ok(addrs)
+	})
+}
+
 /// Extract the list of seeds from a pre-defined text file available through
 /// http. Easy method until we have a set of DNS names we can rely on.
 pub fn web_seeds() -> Box<Fn() -> Vec<SocketAddr> + Send> {
