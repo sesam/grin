@@ -33,7 +33,7 @@ _Note: Before Grin mainnet is released, we will be taking some liberty in applyi
 
 As of this writing, Grin is a **traditional open source project** with limited to no direct funding. As such, we have little means with which to compensate  security researchers for their contributions. We recognize this is a shame and intend to do our best to still make these worth while by:
 
-* Advertising the vulnerability, the researchers, or their team on a public page linked from our website, with a links of their choosing.
+* Advertising the vulnerability, the researchers, or their team on a public page linked from our website, with a link of their choosing.
 * Acting as reference whenever this is needed.
 * Setting up retroactive bounties whenever possible.
 
@@ -52,7 +52,7 @@ While we intend to undergo more formal audits before release, continued code rev
 
 ## Chain Splits
 
-The Grin Team runs a chain split monitoring tool at (TBD). It is encouraged to monitor it regularly and setup alerts. In case of an accidental chain split:
+The Grin Team runs a chain split monitoring tool at [GrinExplorer.net](https://grinexplorer.net). It is encouraged to monitor it regularly and setup alerts. In case of an accidental chain split:
 
 * Exchanges and merchants should either cease operation or extend considerably confirmation delays.
 * Miners and mining pools should immediately consult with Grin's development team on regular channels (Grin's Gitter mainly) to diagnose the split and determine a course of events.
